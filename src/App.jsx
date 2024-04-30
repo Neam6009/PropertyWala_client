@@ -35,7 +35,7 @@ import BlogDetails from "./routes/BlogDetails";
 
 // App.jsx
 
-export const dockerUrl = 'http://50.19.14.245:3003';
+export const dockerUrl = "https://propertywala-server-render.onrender.com";
 
 
 const propertiesLoader = async () => {
