@@ -7,11 +7,7 @@ import { faBars, faLandmark } from "@fortawesome/free-solid-svg-icons";
 import { set } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
-// import rent from "../assets/Styles/rent";
-// import aboutUsImg from "../assets/Styles/aboutUs.svg";
-// import adminImg from "../assets/Styles/admin.svg";
-// import blogImg from "../assets/Styles/blog.svg";
-// import buyImg from "../assets/Styles/buy.svg";
+
 
 function Sidebar() {
   const [sideBar, setSideBar] = useState(false);
@@ -84,23 +80,23 @@ function Sidebar() {
           <HoverText text="Premium" top={6.75} />
         </Link>
 
-        {user && (user?.isCertified? 
-        <>
-          <Link className={styles.sidebarLink} to="/compose-blog">
-          <button className={styles.sidebarButton}>C</button>
-          <HoverText text="Compose" top={7.75} />
-        </Link></>: "")}
+        {user && (user?.isCertified ?
+          <>
+            <Link className={styles.sidebarLink} to="/compose-blog">
+              <button className={styles.sidebarButton}>C</button>
+              <HoverText text="Compose" top={7.75} />
+            </Link></> : "")}
 
-        {user && (user?.isAdmin? 
-        <>
-          <Link className={styles.sidebarLink} to="/admin-control">
-          <button className={styles.sidebarButton}>AD</button>
-          <HoverText text="Admin Controls" top={8.75} />
-        </Link>
+        {user && (user?.isAdmin ?
+          <>
+            <Link className={styles.sidebarLink} to="/admin-control">
+              <button className={styles.sidebarButton}>AD</button>
+              <HoverText text="Admin Controls" top={8.75} />
+            </Link>
 
-        </>: "")}
+          </> : "")}
 
-        
+
       </div>
     </div>
   );
@@ -143,22 +139,22 @@ function Sidebar() {
           <button className={styles.sidebarButton}>Premium</button>
         </Link>
 
-        {user && (user?.isCertified? 
-        <>
-          <Link className={styles.sidebarLink} to="/compose-blog">
-          <button className={styles.sidebarButton}>Compose</button>
-        </Link>
-        </>: "")}
+        {user && (user?.isCertified ?
+          <>
+            <Link className={styles.sidebarLink} to="/compose-blog">
+              <button className={styles.sidebarButton}>Compose</button>
+            </Link>
+          </> : "")}
 
-        {user && (user?.isAdmin? 
-        <>
-          <Link className={styles.sidebarLink} to="/admin-control">
-          <button className={styles.sidebarButton}>Admin Controls</button>
-        </Link>
-        </>: "")}
-        
+        {user && (user?.isAdmin ?
+          <>
+            <Link className={styles.sidebarLink} to="/admin-control">
+              <button className={styles.sidebarButton}>Admin Controls</button>
+            </Link>
+          </> : "")}
 
-        
+
+
       </div>
     </>
   );
