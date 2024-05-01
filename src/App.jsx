@@ -35,7 +35,7 @@ import BlogDetails from "./routes/BlogDetails";
 
 // App.jsx
 
-export const dockerUrl = "https://sei4dx.tunnel.pyjam.as";
+export const dockerUrl = "http://50.19.14.245:3003";
 
 
 const propertiesLoader = async () => {
