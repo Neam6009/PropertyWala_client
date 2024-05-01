@@ -3,7 +3,7 @@ import classes from "../assets/Styles/PropertyDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLoaderData, useLocation, useParams, useNavigate } from "react-router-dom";
 import SimpleSliderPd from "../components/PropertyDetailsCarousel";
-import { dockerUrl } from '../App';
+
 
 
 const PropertyDetails = () => {
@@ -22,21 +22,12 @@ const PropertyDetails = () => {
     const setWishListFunction = async () => {
 
       const wish = await fetch(
-        dockerUrl + `/properties/checkWishlist/${user._id}/${property._id}`
+        backendUrl + `/properties/checkWishlist/${user._id}/${property._id}`
       ).then((res) => res.json());
       setWishlist(wish.result)
     }
 
-    // Fetch CSRF token from the server
-    /**
-fetch(dockerUrl + '/csrf-token', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((error) => console.error('Error fetching CSRF token:', error));
-*/
+
 
     setWishListFunction();
     console.log(wishlist)
@@ -49,13 +40,13 @@ fetch(dockerUrl + '/csrf-token', {
     if (confirm) {
       try {
         const response = await fetch(
-          dockerUrl + "/properties/removeProperty",
+          backendUrl + "/properties/removeProperty",
           {
             method: "POST",
             credentials: 'include',
             headers: {
               "Content-Type": "application/json",
-              // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
             },
             body: JSON.stringify({ userId: user._id, password: confirm, propertyId: property._id }),
           }
@@ -89,20 +80,20 @@ fetch(dockerUrl + '/csrf-token', {
 
   const wishListHandler = async () => {
     if (wishlist) {
-      fetch(dockerUrl + `/properties/removeFromWishlist/${user._id}/${property._id}`, {
+      fetch(backendUrl + `/properties/removeFromWishlist/${user._id}/${property._id}`, {
         method: "POST",
         credentials: 'include',
         headers: {
-          // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
         },
       }).then(setWishlist(false))
 
     } else {
-      fetch(dockerUrl + `/properties/addToWishlist/${user._id}/${property._id}`, {
+      fetch(backendUrl + `/properties/addToWishlist/${user._id}/${property._id}`, {
         method: "POST",
         credentials: 'include',
         headers: {
-          // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
         },
       }).then(setWishlist(true))
 

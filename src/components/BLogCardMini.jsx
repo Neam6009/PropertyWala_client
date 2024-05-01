@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "../assets/Styles/blogCardMini.css?inline";
 import { Link, NavLink } from "react-router-dom";
-import { dockerUrl } from '../App';
+
 const BLogCardMini = ({ blog }) => {
   return (
     <div>

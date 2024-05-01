@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { dockerUrl } from '../App';
-import classes from "../assets/Styles/PricingCard.module.css";
+
+import classes from "../assets/styles/PricingCard.module.css";
 const PricingCard = ({ title, price, storage, users, sendUp }) => {
   return (
     <div className={classes.PricingCard}>

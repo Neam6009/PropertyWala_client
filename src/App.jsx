@@ -32,14 +32,12 @@ import { setUser } from "./features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import PropertyDetails from "./routes/PropertyDetails";
 import BlogDetails from "./routes/BlogDetails";
+import { NextUIProvider } from "@nextui-org/react";
 
-// App.jsx
-
-export const dockerUrl = "http://50.19.14.245:3003";
-
+export const backendUrl = "http://50.19.14.245:3003";
 
 const propertiesLoader = async () => {
-  const properties = await fetch(dockerUrl + "/properties/all").then(
+  const properties = await fetch(backendUrl + "/properties/all").then(
     (res) => res.json()
   );
 
@@ -47,12 +45,13 @@ const propertiesLoader = async () => {
 };
 
 const blogsLoader = async () => {
-  const blogs = await fetch(dockerUrl + "/blogs/all").then((res) =>
+  const blogs = await fetch(backendUrl + "/blogs/all").then((res) =>
     res.json()
   );
   return blogs;
 };
 
+const getUserById = async () => { };
 
 const router = createBrowserRouter([
   {
@@ -333,7 +332,7 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(dockerUrl + "/auth/verify", {
+        const response = await fetch(backendUrl + "/auth/verify", {
           method: "GET",
           credentials: "include",
         });

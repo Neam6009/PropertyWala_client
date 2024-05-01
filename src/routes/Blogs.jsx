@@ -13,7 +13,8 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import BLogCardMini from "../components/BLogCardMini";
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 
 const Blogs = () => {
   const blogs = useLoaderData();
@@ -21,27 +22,18 @@ const Blogs = () => {
   const [csrfToken, setCsrfToken] = useState();
 
   useEffect(() => {
-    // Fetch CSRF token from the server
-    /**
-fetch(dockerUrl + '/csrf-token', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((error) => console.error('Error fetching CSRF token:', error));
-*/
+
 
   }, []);
 
   const addMailHandler = (e) => {
     e.preventDefault();
 
-    fetch(dockerUrl + `/mail/${mail}`, {
+    fetch(backendUrl + `/mail/${mail}`, {
       method: "POST",
       credentials: 'include',
       headers: {
-        // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+        // Include CSRF token in the header
       },
     });
     setMail("");

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import classes from "../assets/Styles/AdminControlUserCard.module.css";
 import { useSelector } from "react-redux";
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 const AdminControlUserCard = ({ user }) => {
 	const [isCertified, setIsCetified] = useState(user.isCertified);
 	const [isAdmin, setIsAdmin] = useState(user.isAdmin);
@@ -10,33 +11,26 @@ const AdminControlUserCard = ({ user }) => {
 
 
 	useEffect(() => {
-		// Fetch CSRF token from the server
-		// fetch(dockerUrl + '/csrf-token', {
-		// 	method: 'GET',
-		// 	credentials: 'include',
-		// })
-		// 	.then((response) => response.json())
-		// 	.then((data) => setCsrfToken(data.csrfToken))
-		// 	.catch((error) => console.error('Error fetching CSRF token:', error));
+
 
 	}, []);
 
 	const certifiedHandler = async (change) => {
-		await fetch(dockerUrl + `/certified/${user._id}/${change}`, {
+		await fetch(backendUrl + `/certified/${user._id}/${change}`, {
 			method: "POST",
 			credentials: 'include',
 			headers: {
-				// 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
 			},
 		});
 		setIsCetified(change);
 	};
 	const adminHandler = async (change) => {
-		await fetch(dockerUrl + `/admin/${user._id}/${change}`, {
+		await fetch(backendUrl + `/admin/${user._id}/${change}`, {
 			method: "POST",
 			credentials: 'include',
 			headers: {
-				// 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
 			},
 
 		});
@@ -50,12 +44,12 @@ const AdminControlUserCard = ({ user }) => {
 			alert("you can't delete your own account here!");
 			return;
 		} else {
-			const response = await fetch(dockerUrl + `/admin/deleteUserByAdmin`, {
+			const response = await fetch(backendUrl + `/admin/deleteUserByAdmin`, {
 				method: "POST",
 				credentials: 'include',
 				headers: {
 					"Content-Type": "application/json",
-					// 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
 				},
 				body: JSON.stringify({ deleteUserId: deleteUserId }),
 

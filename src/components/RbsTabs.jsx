@@ -20,14 +20,14 @@ const RbsTabs = () => {
             style={
               rbsType === 0
                 ? {
-                  margin: 0,
-                  border: 0,
-                  color: "#7164F0",
-                  textDecoration: "none",
-                }
+                    margin: 0,
+                    border: 0,
+                    color: "#7164F0",
+                    textDecoration: "none",
+                  }
                 : {
-                  textDecoration: "none",
-                }
+                    textDecoration: "none",
+                  }
             }
           >
             Rent
@@ -36,14 +36,14 @@ const RbsTabs = () => {
             style={
               rbsType === 1
                 ? {
-                  margin: 0,
-                  border: 0,
-                  color: "#7164F0",
-                  textDecoration: "none",
-                }
+                    margin: 0,
+                    border: 0,
+                    color: "#7164F0",
+                    textDecoration: "none",
+                  }
                 : {
-                  textDecoration: "none",
-                }
+                    textDecoration: "none",
+                  }
             }
           >
             Buy
@@ -52,14 +52,14 @@ const RbsTabs = () => {
             style={
               rbsType === 2
                 ? {
-                  margin: 0,
-                  border: 0,
-                  color: "#7164F0",
-                  textDecoration: "none",
-                }
+                    margin: 0,
+                    border: 0,
+                    color: "#7164F0",
+                    textDecoration: "none",
+                  }
                 : {
-                  textDecoration: "none",
-                }
+                    textDecoration: "none",
+                  }
             }
           >
             Sell
@@ -76,10 +76,6 @@ const RbsTabs = () => {
           <input
             className={classes.tabsInput}
             value={homeQuery}
-            style={{
-              background: "white",
-              color: "black",
-            }}
             onChange={(e) => {
               setHomeQuery(e.target.value);
             }}
@@ -99,15 +95,11 @@ const RbsTabs = () => {
           <input
             className={classes.tabsInput}
             value={homeQuery}
-            style={{
-              background: "white",
-              color: "black",
-            }}
             onChange={(e) => {
               setHomeQuery(e.target.value);
             }}
           />
-          <Link to={`/show-properties/sale/${homeQuery}`} >
+          <Link to={`/show-properties/sale/${homeQuery}`}>
             <button className={classes.tabsButton}>Buy Now!</button>
           </Link>
         </TabPanel>

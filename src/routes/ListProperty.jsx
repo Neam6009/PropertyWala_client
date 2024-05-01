@@ -5,7 +5,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 
 const cloudUrl = "https://api.cloudinary.com/v1_1/diya8tmxd/image/upload";
 const preset = "ngjbzrk4";
@@ -16,16 +17,7 @@ const ListProperty = () => {
   const [images, setImages] = useState([]);
   const [csrfToken, setCsrfToken] = useState();
   useEffect(() => {
-    // Fetch CSRF token from the server
-    /**
-fetch(dockerUrl + '/csrf-token', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((error) => console.error('Error fetching CSRF token:', error));
-*/
+
 
   }, []);
 
@@ -60,12 +52,12 @@ fetch(dockerUrl + '/csrf-token', {
       }
 
       try {
-        await fetch(dockerUrl + "/properties/listProperty", {
+        await fetch(backendUrl + "/properties/listProperty", {
           method: "POST",
           credentials: 'include',
           headers: {
             "Content-Type": "application/json",
-            // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+            // Include CSRF token in the header
           },
           body: JSON.stringify({
             property: data,

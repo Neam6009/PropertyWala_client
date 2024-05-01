@@ -15,7 +15,8 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 
 const Home = () => {
   const properties = useLoaderData();
@@ -23,16 +24,7 @@ const Home = () => {
   const [csrfToken, setCsrfToken] = useState();
 
   useEffect(() => {
-    // Fetch CSRF token from the server
-    /**
-fetch(dockerUrl + '/csrf-token', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((error) => console.error('Error fetching CSRF token:', error));
-*/
+
 
   }, []);
 
@@ -40,11 +32,11 @@ fetch(dockerUrl + '/csrf-token', {
   const addMailHandler = (e) => {
     e.preventDefault();
 
-    fetch(dockerUrl + `/mail/${mail}`, {
+    fetch(backendUrl + `/mail/${mail}`, {
       method: "POST",
       credentials: 'include',
       headers: {
-        // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+        // Include CSRF token in the header
       },
     });
     setMail("");

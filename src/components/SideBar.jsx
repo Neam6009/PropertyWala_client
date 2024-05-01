@@ -29,9 +29,7 @@ function Sidebar() {
           style={{ left: "4rem", top: t }}
           to="/"
         >
-          <button>
-            {text}
-          </button>
+          <button>{text}</button>
         </Link>
       </>
     );
@@ -86,23 +84,23 @@ function Sidebar() {
           <HoverText text="Premium" top={6.75} />
         </Link>
 
-        {user && (user?.isCertified ?
-          <>
-            <Link className={styles.sidebarLink} to="/compose-blog">
-              <button className={styles.sidebarButton}>C</button>
-              <HoverText text="Compose" top={7.75} />
-            </Link></> : "")}
+        {user && (user?.isCertified? 
+        <>
+          <Link className={styles.sidebarLink} to="/compose-blog">
+          <button className={styles.sidebarButton}>C</button>
+          <HoverText text="Compose" top={7.75} />
+        </Link></>: "")}
 
-        {user && (user?.isAdmin ?
-          <>
-            <Link className={styles.sidebarLink} to="/admin-control">
-              <button className={styles.sidebarButton}>AD</button>
-              <HoverText text="Admin Controls" top={8.75} />
-            </Link>
+        {user && (user?.isAdmin? 
+        <>
+          <Link className={styles.sidebarLink} to="/admin-control">
+          <button className={styles.sidebarButton}>AD</button>
+          <HoverText text="Admin Controls" top={8.75} />
+        </Link>
 
-          </> : "")}
+        </>: "")}
 
-
+        
       </div>
     </div>
   );
@@ -145,22 +143,22 @@ function Sidebar() {
           <button className={styles.sidebarButton}>Premium</button>
         </Link>
 
-        {user && (user?.isCertified ?
-          <>
-            <Link className={styles.sidebarLink} to="/compose-blog">
-              <button className={styles.sidebarButton}>Compose</button>
-            </Link>
-          </> : "")}
+        {user && (user?.isCertified? 
+        <>
+          <Link className={styles.sidebarLink} to="/compose-blog">
+          <button className={styles.sidebarButton}>Compose</button>
+        </Link>
+        </>: "")}
 
-        {user && (user?.isAdmin ?
-          <>
-            <Link className={styles.sidebarLink} to="/admin-control">
-              <button className={styles.sidebarButton}>Admin Controls</button>
-            </Link>
-          </> : "")}
+        {user && (user?.isAdmin? 
+        <>
+          <Link className={styles.sidebarLink} to="/admin-control">
+          <button className={styles.sidebarButton}>Admin Controls</button>
+        </Link>
+        </>: "")}
+        
 
-
-
+        
       </div>
     </>
   );

@@ -5,7 +5,8 @@ import JoditEditor from "jodit-react";
 import AdminControlUserCard from "../components/AdminControlUserCard";
 import AdminControlPropertyCard from "../components/AdminControlPropertyCard";
 import AdminControlBlogCard from "../components/AdminControlBlogCard";
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 
 const AdminControl = () => {
   const [AcType, setAcType] = useState(1);
@@ -17,24 +18,17 @@ const AdminControl = () => {
   useEffect(() => {
     const fetchData = async () => {
       const properties = await fetch(
-        dockerUrl + "/properties/all"
+        backendUrl + "/properties/all"
       ).then((res) => res.json());
-      const blogs = await fetch(dockerUrl + "/blogs/all").then((res) =>
+      const blogs = await fetch(backendUrl + "/blogs/all").then((res) =>
         res.json()
       );
 
-      const users = await fetch(dockerUrl + "/users/all").then((res) =>
+      const users = await fetch(backendUrl + "/users/all").then((res) =>
         res.json()
       );
 
       // Fetch CSRF token from the server
-      // fetch(dockerUrl + '/csrf-token', {
-      //   method: 'GET',
-      //   credentials: 'include',
-      // })
-      //   .then((response) => response.json())
-      //   .then((data) => setCsrfToken(data.csrfToken))
-      //   .catch((error) => console.error('Error fetching CSRF token:', error));
 
 
       setProperties(properties);
@@ -106,13 +100,12 @@ const AdminControl = () => {
     formData.append("subject", subject);
     formData.append("content", content);
 
-    fetch(dockerUrl + `/allMail`, {
+    fetch(backendUrl + `/allMail`, {
       method: "POST",
       credentials: 'include',
       body: JSON.stringify(Object.fromEntries(formData)),
 
       headers: {
-        // 'CSRF-Token': csrfToken,
         "Content-Type": "application/json",
       },
     });

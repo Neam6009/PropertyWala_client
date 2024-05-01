@@ -8,7 +8,9 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
+
 
 const BlogDetailsPage = () => {
   const { id } = useParams();
@@ -16,16 +18,7 @@ const BlogDetailsPage = () => {
 
 
   useEffect(() => {
-    // Fetch CSRF token from the server
-    /**
-fetch(dockerUrl + '/csrf-token', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((error) => console.error('Error fetching CSRF token:', error));
-*/
+
 
   }, []);
 
@@ -42,11 +35,11 @@ fetch(dockerUrl + '/csrf-token', {
 
     if (confirm) {
       if (confirm == blog.title) {
-        fetch(dockerUrl + `/blogs/deleteBlog/${blog._id}`, {
+        fetch(backendUrl + `/blogs/deleteBlog/${blog._id}`, {
           method: "POST",
           credentials: 'include',
           headers: {
-            // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+            // Include CSRF token in the header
           },
         }).then(() => alert("This blog has been deleted!"));
 

@@ -1,34 +1,25 @@
 import React, { useEffect } from "react";
 import classes from "../assets/Styles/AdminControlBlogCard.module.css";
 import { useState } from "react";
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
 
 const AdminControlBlogCard = ({ blog }) => {
   const [deleted, setDeleted] = useState(false);
   const [csrfToken, setCsrfToken] = useState();
 
   useEffect(() => {
-    // Fetch CSRF token from the server
-    /**
-fetch(dockerUrl + '/csrf-token', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((error) => console.error('Error fetching CSRF token:', error));
-*/
+
 
   }, []);
 
 
   const removeBlogHandler = async () => {
-    fetch(dockerUrl + `/blogs/deleteBlog/${blog._id}`, {
+    fetch(backendUrl + `/blogs/deleteBlog/${blog._id}`, {
       method: "POST",
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
       },
     }).then(() => setDeleted(true));
   };

@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../assets/Styles/footer.module.css";
+import classes from "../assets/styles/footer.module.css";
 import { Link } from "react-router-dom";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";

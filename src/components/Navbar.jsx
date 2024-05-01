@@ -4,7 +4,8 @@ import { Outlet, Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/PW_logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
@@ -13,28 +14,18 @@ const Navbar = () => {
   const [csrfToken, setCsrfToken] = useState();
 
   useEffect(() => {
-    // Fetch CSRF token from the server
-    /**
-/**
-fetch(dockerUrl + '/csrf-token', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((error) => console.error('Error fetching CSRF token:', error));
-*/
+
 
   }, []);
 
   const logOutHandler = async () => {
     try {
-      const response = await fetch(dockerUrl + "/auth/logout", {
+      const response = await fetch(backendUrl + "/auth/logout", {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          // 'CSRF-Token': csrfToken,
+
         },
       });
 

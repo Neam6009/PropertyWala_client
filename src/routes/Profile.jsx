@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 
 
 
@@ -33,28 +34,21 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       const properties = await fetch(
-        dockerUrl + `/properties/user/${user._id}`
+        backendUrl + `/properties/user/${user._id}`
       ).then((res) => res.json());
 
       setProperties(properties);
 
       const wish = await fetch(
-        dockerUrl + `/properties/getWishlist/${user._id}`
+        backendUrl + `/properties/getWishlist/${user._id}`
       ).then((res) => res.json());
       setWishList(wish);
 
       // Fetch CSRF token from the server
-      // fetch(dockerUrl + '/csrf-token', {
-      //   method: 'GET',
-      //   credentials: 'include',
-      // })
-      //   .then((response) => response.json())
-      //   .then((data) => setCsrfToken(data.csrfToken))
-      //   .catch((error) => console.error('Error fetching CSRF token:', error));
 
 
       if (user.profileImage) {
-        setpImg(dockerUrl + `/profileImage/${user?.profileImage}`);
+        setpImg(backendUrl + `/profileImage/${user?.profileImage}`);
       }
     };
 
@@ -129,13 +123,13 @@ const Profile = () => {
 
     try {
       const response = await fetch(
-        dockerUrl + "/auth/changePassword",
+        backendUrl + "/auth/changePassword",
         {
           method: "POST",
           credentials: 'include',
           headers: {
             "Content-Type": "application/json",
-            // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
           },
           body: JSON.stringify({ userId: user._id, oldPassword: oldPassword, newPassword: newPassword }),
         }
@@ -200,12 +194,12 @@ const Profile = () => {
 
   const logOutHandler = async () => {
     try {
-      const response = await fetch(dockerUrl + "/auth/logout", {
+      const response = await fetch(backendUrl + "/auth/logout", {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
         },
       });
 
@@ -223,13 +217,13 @@ const Profile = () => {
 
       try {
         const response = await fetch(
-          dockerUrl + "/auth/deleteUser",
+          backendUrl + "/auth/deleteUser",
           {
             method: "POST",
             credentials: 'include',
             headers: {
               "Content-Type": "application/json",
-              // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
             },
             body: JSON.stringify({ userId: user._id, password: confirm }),
           }
@@ -261,11 +255,11 @@ const Profile = () => {
       formData.append('profileImage', image);
       formData.append('userId', user._id)
       try {
-        const response = await fetch(dockerUrl + "/uploadProfileImage", {
+        const response = await fetch(backendUrl + "/uploadProfileImage", {
           method: "POST",
           credentials: 'include',
           headers: {
-            // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
           },
           body: formData,
         });

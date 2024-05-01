@@ -4,7 +4,8 @@ import JoditEditor from "jodit-react";
 import classes from "../assets/Styles/composeBlog.module.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 
 
 const cloudUrl = "https://api.cloudinary.com/v1_1/diya8tmxd/image/upload";
@@ -24,16 +25,7 @@ const ComposeBlog = () => {
   };
 
   useEffect(() => {
-    // Fetch CSRF token from the server
-    /**
-fetch(dockerUrl + '/csrf-token', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setCsrfToken(data.csrfToken))
-      .catch((error) => console.error('Error fetching CSRF token:', error));
-*/
+
 
   }, []);
 
@@ -54,12 +46,12 @@ fetch(dockerUrl + '/csrf-token', {
     const url = res.data.secure_url;
 
     try {
-      fetch(dockerUrl + "/blogs/insert", {
+      fetch(backendUrl + "/blogs/insert", {
         method: "POST",
         credentials: 'include',
         headers: {
           "Content-Type": "application/json",
-          // 'CSRF-Token': csrfToken, // Include CSRF token in the header
+          // Include CSRF token in the header
         },
         body: JSON.stringify({ user, image: url, blog }),
       }).then(() => {
@@ -135,13 +127,13 @@ fetch(dockerUrl + '/csrf-token', {
     formData.append("content", content);
     console.log(subject, content);
 
-    fetch(dockerUrl + `/newsletterMail`, {
+    fetch(backendUrl + `/newsletterMail`, {
       method: "POST",
       credentials: 'include',
       body: JSON.stringify(Object.fromEntries(formData)),
       headers: {
         "Content-Type": "application/json",
-        'CSRF-Token': csrfToken
+
       },
     });
 

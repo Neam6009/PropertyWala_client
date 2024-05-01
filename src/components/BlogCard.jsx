@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "../assets/Styles/blogCard.module.css";
 import { Link } from "react-router-dom";
-import { dockerUrl } from '../App';
 
 const BlogCard = ({ blog }) => {
   return (

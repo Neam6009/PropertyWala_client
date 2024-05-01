@@ -3,7 +3,8 @@ import classes from "../assets/Styles/login.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
-import { dockerUrl } from '../App';
+import { backendUrl } from '../App';
+
 
 const SignIn = () => {
 	const [csrfToken, setCsrfToken] = useState();
@@ -16,15 +17,6 @@ const SignIn = () => {
 
 
 	useEffect(() => {
-		// Fetch CSRF token from the server
-		// fetch(dockerUrl + '/csrf-token', {
-		// 	method: 'GET',
-		// 	credentials: 'include',
-		// })
-		// 	.then((response) => response.json())
-		// 	.then((data) => setCsrfToken(data.csrfToken))
-		// 	.then(() => console.log(csrfToken))
-		// 	.catch((error) => console.error('Error fetching CSRF token:', error));
 
 
 	}, []);
@@ -33,13 +25,12 @@ const SignIn = () => {
 		event.preventDefault();
 
 		try {
-			console.log(csrfToken)
-			const response = await fetch(dockerUrl + '/auth/login', {
+			const response = await fetch(backendUrl + '/auth/login', {
 				method: 'POST',
 				credentials: 'include',
 				headers: {
 					'Content-Type': 'application/json',
-					// 'CSRF-Token': csrfToken, // Include CSRF token in the header
+
 				},
 				body: JSON.stringify({ email, password }),
 			});

@@ -4,7 +4,7 @@ import noImg from "../assets/images/PW_noImageFound.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBed, faBath, faChartArea } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { dockerUrl } from '../App';
+
 const PropertyCard = ({ property }) => {
   let d = "type";
   let img = property?.propertyImage[0];
