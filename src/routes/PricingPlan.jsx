@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../assets/Styles/pricingApp.module.css";
+import classes from "../assets/Styles/PricingApp.module.css";
 
 import { useState } from "react";
 import PricingCard from "../components/PricingCard";
@@ -13,7 +13,7 @@ const Cirrcle = ({ left }) => {
 const PricingPlan = () => {
   const [selectMonthly, setSelectMonthly] = useState(true);
 
-  const slideSwitchHandler = () => {};
+  const slideSwitchHandler = () => { };
 
   return (
     <div className={classes.PricingApp}>
