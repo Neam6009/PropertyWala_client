@@ -284,8 +284,9 @@ const Profile = () => {
           {changePasswordBox && changePassword}
           <div className={classes.userDetails}>
             <h2>Your Profile</h2>
+            <p className={classes.userIcon}>{user.name[0]} </p>
             <div className={classes.userImage}>
-              {user.profileImage ?
+              {/* {user.profileImage ?
                 <>
                   <img className={classes.userImg} src={pimg} alt="profileImage" />
                 </>
@@ -300,7 +301,7 @@ const Profile = () => {
                 onChange={(e) => { setImage(e.target.files[0]) }} />
                 {image ? <><button className={classes.uploadButton} type="submit" >upload</button> <button className={classes.cancelupload} onClick={e => setImage()}>cancel</button></> : ""}
               </form>
-              <p className={classes.imageName}>{image ? image.name : ""}</p>
+              <p className={classes.imageName}>{image ? image.name : ""}</p> */}
             </div>
             <p>{user?.name}</p>
             <div className={classes.userDetailsStats}>
