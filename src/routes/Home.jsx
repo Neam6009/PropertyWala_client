@@ -24,13 +24,15 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch CSRF token from the server
-    fetch(dockerUrl + '/csrf-token', {
+    /**
+fetch(dockerUrl + '/csrf-token', {
       method: 'GET',
       credentials: 'include',
     })
       .then((response) => response.json())
       .then((data) => setCsrfToken(data.csrfToken))
       .catch((error) => console.error('Error fetching CSRF token:', error));
+*/
 
   }, []);
 
@@ -42,7 +44,7 @@ const Home = () => {
       method: "POST",
       credentials: 'include',
       headers: {
-        'CSRF-Token': csrfToken, // Include CSRF token in the header
+        // 'CSRF-Token': csrfToken, // Include CSRF token in the header
       },
     });
     setMail("");

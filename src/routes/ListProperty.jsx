@@ -17,13 +17,15 @@ const ListProperty = () => {
   const [csrfToken, setCsrfToken] = useState();
   useEffect(() => {
     // Fetch CSRF token from the server
-    fetch(dockerUrl + '/csrf-token', {
+    /**
+fetch(dockerUrl + '/csrf-token', {
       method: 'GET',
       credentials: 'include',
     })
       .then((response) => response.json())
       .then((data) => setCsrfToken(data.csrfToken))
       .catch((error) => console.error('Error fetching CSRF token:', error));
+*/
 
   }, []);
 
@@ -63,7 +65,7 @@ const ListProperty = () => {
           credentials: 'include',
           headers: {
             "Content-Type": "application/json",
-            'CSRF-Token': csrfToken, // Include CSRF token in the header
+            // 'CSRF-Token': csrfToken, // Include CSRF token in the header
           },
           body: JSON.stringify({
             property: data,

@@ -28,13 +28,13 @@ const AdminControl = () => {
       );
 
       // Fetch CSRF token from the server
-      fetch(dockerUrl + '/csrf-token', {
-        method: 'GET',
-        credentials: 'include',
-      })
-        .then((response) => response.json())
-        .then((data) => setCsrfToken(data.csrfToken))
-        .catch((error) => console.error('Error fetching CSRF token:', error));
+      // fetch(dockerUrl + '/csrf-token', {
+      //   method: 'GET',
+      //   credentials: 'include',
+      // })
+      //   .then((response) => response.json())
+      //   .then((data) => setCsrfToken(data.csrfToken))
+      //   .catch((error) => console.error('Error fetching CSRF token:', error));
 
 
       setProperties(properties);
@@ -112,7 +112,7 @@ const AdminControl = () => {
       body: JSON.stringify(Object.fromEntries(formData)),
 
       headers: {
-        'CSRF-Token': csrfToken,
+        // 'CSRF-Token': csrfToken,
         "Content-Type": "application/json",
       },
     });

@@ -17,14 +17,14 @@ const SignIn = () => {
 
 	useEffect(() => {
 		// Fetch CSRF token from the server
-		fetch(dockerUrl + '/csrf-token', {
-			method: 'GET',
-			credentials: 'include',
-		})
-			.then((response) => response.json())
-			.then((data) => setCsrfToken(data.csrfToken))
-			.then(() => console.log(csrfToken))
-			.catch((error) => console.error('Error fetching CSRF token:', error));
+		// fetch(dockerUrl + '/csrf-token', {
+		// 	method: 'GET',
+		// 	credentials: 'include',
+		// })
+		// 	.then((response) => response.json())
+		// 	.then((data) => setCsrfToken(data.csrfToken))
+		// 	.then(() => console.log(csrfToken))
+		// 	.catch((error) => console.error('Error fetching CSRF token:', error));
 
 
 	}, []);
@@ -33,12 +33,13 @@ const SignIn = () => {
 		event.preventDefault();
 
 		try {
+			console.log(csrfToken)
 			const response = await fetch(dockerUrl + '/auth/login', {
 				method: 'POST',
 				credentials: 'include',
 				headers: {
 					'Content-Type': 'application/json',
-					'CSRF-Token': csrfToken, // Include CSRF token in the header
+					// 'CSRF-Token': csrfToken, // Include CSRF token in the header
 				},
 				body: JSON.stringify({ email, password }),
 			});

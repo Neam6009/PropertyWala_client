@@ -28,13 +28,15 @@ const PropertyDetails = () => {
     }
 
     // Fetch CSRF token from the server
-    fetch(dockerUrl + '/csrf-token', {
+    /**
+fetch(dockerUrl + '/csrf-token', {
       method: 'GET',
       credentials: 'include',
     })
       .then((response) => response.json())
       .then((data) => setCsrfToken(data.csrfToken))
       .catch((error) => console.error('Error fetching CSRF token:', error));
+*/
 
     setWishListFunction();
     console.log(wishlist)
@@ -53,7 +55,7 @@ const PropertyDetails = () => {
             credentials: 'include',
             headers: {
               "Content-Type": "application/json",
-              'CSRF-Token': csrfToken, // Include CSRF token in the header
+              // 'CSRF-Token': csrfToken, // Include CSRF token in the header
             },
             body: JSON.stringify({ userId: user._id, password: confirm, propertyId: property._id }),
           }
@@ -91,7 +93,7 @@ const PropertyDetails = () => {
         method: "POST",
         credentials: 'include',
         headers: {
-          'CSRF-Token': csrfToken, // Include CSRF token in the header
+          // 'CSRF-Token': csrfToken, // Include CSRF token in the header
         },
       }).then(setWishlist(false))
 
@@ -100,7 +102,7 @@ const PropertyDetails = () => {
         method: "POST",
         credentials: 'include',
         headers: {
-          'CSRF-Token': csrfToken, // Include CSRF token in the header
+          // 'CSRF-Token': csrfToken, // Include CSRF token in the header
         },
       }).then(setWishlist(true))
 

@@ -44,13 +44,13 @@ const Profile = () => {
       setWishList(wish);
 
       // Fetch CSRF token from the server
-      fetch(dockerUrl + '/csrf-token', {
-        method: 'GET',
-        credentials: 'include',
-      })
-        .then((response) => response.json())
-        .then((data) => setCsrfToken(data.csrfToken))
-        .catch((error) => console.error('Error fetching CSRF token:', error));
+      // fetch(dockerUrl + '/csrf-token', {
+      //   method: 'GET',
+      //   credentials: 'include',
+      // })
+      //   .then((response) => response.json())
+      //   .then((data) => setCsrfToken(data.csrfToken))
+      //   .catch((error) => console.error('Error fetching CSRF token:', error));
 
 
       if (user.profileImage) {
@@ -135,7 +135,7 @@ const Profile = () => {
           credentials: 'include',
           headers: {
             "Content-Type": "application/json",
-            'CSRF-Token': csrfToken, // Include CSRF token in the header
+            // 'CSRF-Token': csrfToken, // Include CSRF token in the header
           },
           body: JSON.stringify({ userId: user._id, oldPassword: oldPassword, newPassword: newPassword }),
         }
@@ -205,7 +205,7 @@ const Profile = () => {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          'CSRF-Token': csrfToken, // Include CSRF token in the header
+          // 'CSRF-Token': csrfToken, // Include CSRF token in the header
         },
       });
 
@@ -229,7 +229,7 @@ const Profile = () => {
             credentials: 'include',
             headers: {
               "Content-Type": "application/json",
-              'CSRF-Token': csrfToken, // Include CSRF token in the header
+              // 'CSRF-Token': csrfToken, // Include CSRF token in the header
             },
             body: JSON.stringify({ userId: user._id, password: confirm }),
           }
@@ -265,7 +265,7 @@ const Profile = () => {
           method: "POST",
           credentials: 'include',
           headers: {
-            'CSRF-Token': csrfToken, // Include CSRF token in the header
+            // 'CSRF-Token': csrfToken, // Include CSRF token in the header
           },
           body: formData,
         });
