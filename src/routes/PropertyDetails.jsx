@@ -3,6 +3,7 @@ import classes from "../assets/Styles/PropertyDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLoaderData, useLocation, useParams, useNavigate } from "react-router-dom";
 import SimpleSliderPd from "../components/PropertyDetailsCarousel";
+import { backendUrl } from '../App';
 
 
 

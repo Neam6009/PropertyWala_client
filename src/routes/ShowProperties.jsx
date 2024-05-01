@@ -11,7 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
-
+import { backendUrl } from '../App';
 const ShowProperties = () => {
   const { purpose, homeQuery } = useParams();
   const [type, setType] = useState(purpose);
