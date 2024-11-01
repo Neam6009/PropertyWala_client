@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../assets/Styles/blogCardMini.css?inline";
+import classes from "../assets/Styles/blogCardMini.css";
 import { Link, NavLink } from "react-router-dom";
 
 const BLogCardMini = ({ blog }) => {
