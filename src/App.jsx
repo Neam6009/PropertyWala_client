@@ -34,7 +34,7 @@ import PropertyDetails from "./routes/PropertyDetails";
 import BlogDetails from "./routes/BlogDetails";
 import { NextUIProvider } from "@nextui-org/react";
 
-export const backendUrl = "http://50.19.14.245:3003";
+export const backendUrl = import.meta.env.VITE_Backend_URL;
 
 const propertiesLoader = async () => {
   const properties = await fetch(backendUrl + "/properties/all").then(
